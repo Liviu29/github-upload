@@ -26,8 +26,92 @@
 
   <div class="second-toolbar">
     <mat-tab-group>
-      <mat-tab *ngFor="let subMenuLinkTab of subMenuLinkTabs; let i = index" [label]="subMenuLinkTab.label">
+      <mat-tab *ngFor="let subMenuLinkTab of subMenuLinkTabs" [label]="subMenuLinkTab.label">
       </mat-tab>
     </mat-tab-group>
+  </div>
+
+  <div class="main-page">
+    <div class="main-page_details">
+      <div class="notifications">
+        <div class="notifications-title">Title</div>
+        <div class="notifications-message">You have <a href="https://www.adswizz.com/">2 pending</a> ads to be approved</div>
+      </div>
+      <div class="actions">
+        <div class="actions-filter">
+          <mat-form-field appearance="outline">
+            <mat-icon matPrefix>add_circle_outline</mat-icon>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+          </mat-form-field>
+        </div>
+        <div class="actions-date">
+          <button mat-button matSuffix>
+            <mat-icon>calendar_today</mat-icon>
+            Last 30 days
+          </button>
+        </div>
+        <div class="actions-search">
+          <button mat-button matSuffix>
+            <mat-icon>search</mat-icon>
+            Search
+          </button>
+        </div>
+        <div class="actions-create">
+          <button mat-button matSuffix (click)="createNew()">
+            <mat-icon>add_circle_outline</mat-icon>
+            Create New
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-page_table">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Object Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="metric1">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Metric 1 </th>
+            <td mat-cell *matCellDef="let element"> {{element.metric1 | number}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="metric2">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Metric 2 </th>
+            <td mat-cell *matCellDef="let element"> {{element.metric2 | currency}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="metric3">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Metric 3 </th>
+            <td mat-cell *matCellDef="let element"> {{element.metric3 | currency}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="metric4">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Metric 4 </th>
+            <td mat-cell *matCellDef="let element"> {{element.metric4 | currency}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+            <td mat-cell *matCellDef="let element; let i = index;">
+              <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="removeAt(i)">Remove Item</button>
+                <button mat-menu-item (click)="editItem(element, i)">Edit Item</button>
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
   </div>
 </div>

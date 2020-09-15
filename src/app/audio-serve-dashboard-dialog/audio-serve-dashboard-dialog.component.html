@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Create New</h2>
+
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field>
+    <input matInput
+           placeholder="Add name (string, no validation)"
+           formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="Metric 1 (number, no validation)"
+           formControlName="metric1">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="Metric 2 (number, no validation)"
+           formControlName="metric2">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="Metric 3 (number, no validation)"
+           formControlName="metric3">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="Metric 4 (number, no validation)"
+           formControlName="metric4">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="Action (boolean, no validation)"
+           formControlName="action">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary" (click)="save()" [disabled]="!form.valid">Save</button>
+</mat-dialog-actions>
