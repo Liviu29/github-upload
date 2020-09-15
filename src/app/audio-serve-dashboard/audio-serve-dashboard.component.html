@@ -1,0 +1,33 @@
+<div class="audio-serve-dashboard">
+  <div class="main-toolbar">
+    <div class="main-toolbar_logo"><span>AUDIO</span>SERVE</div>
+    <div class="main-toolbar_tabs">
+      <mat-tab-group (selectedIndexChange)="addSubMenuLinkTabs($event)">
+        <mat-tab *ngFor="let audioServeTab of audioServeTabs" [label]="audioServeTab.label">
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="main-toolbar_search">
+      <mat-form-field>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput type="search" placeholder="Search">
+      </mat-form-field>
+    </div>
+    <div class="main-toolbar_user">
+      <div class="user-img">
+        <img src="../../assets/user.jpg" alt="Avatar">
+      </div>
+      <div class="user-details">
+        <div class="user-details_name">Will Hunter</div>
+        <div class="user-details_job">Poolside.Fm</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="second-toolbar">
+    <mat-tab-group>
+      <mat-tab *ngFor="let subMenuLinkTab of subMenuLinkTabs; let i = index" [label]="subMenuLinkTab.label">
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
