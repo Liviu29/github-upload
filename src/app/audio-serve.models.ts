@@ -12,6 +12,6 @@ export interface MetricElement {
   metric2: number;
   metric3: number;
   metric4: number;
-  action: boolean;
+  action: string;
 }
 

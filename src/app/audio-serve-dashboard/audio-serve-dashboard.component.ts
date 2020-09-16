@@ -41,6 +41,7 @@ export class AudioServeDashboardComponent implements OnInit {
     const audioServeDataTable = this.audioServeService.getAudioServeTableData();
     this.dataSource = new MatTableDataSource(audioServeDataTable);
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(event: Event) {
